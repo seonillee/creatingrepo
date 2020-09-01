@@ -1,0 +1,128 @@
+---
+title: "test"
+author: "seonil lee"
+date: "9/1/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, collapse=TRUE)
+if (dir.exists("scratch")) {
+  unlink("scratch", recursive=TRUE)
+}
+dir.create("scratch")
+knitr::opts_knit$set(root.dir="scratch")
+```
+
+#### Initialization
+
+In this Markdown document we can use R commands as we would at the R console
+
+```{r gitinit}
+system('git config --global user.name  "seonillee"')
+system('git config --global user.email "slee454@illinois.edu"')
+## check
+system("git config --global user.name", intern=TRUE)
+system("git config --global user.email", intern=TRUE)
+```
+
+but we can also use shell
+
+```{bash}
+git config --global user.name
+git config --global user.email
+```
+
+#### Scratch repo
+
+```{bash}
+git init
+```
+
+#### Status
+
+```{bash}
+git status
+```
+
+#### Initial file
+
+```{bash}
+echo "Some not so important content." > one_file.txt
+echo "Some more on line two." >> one_file.txt
+git status
+```
+
+#### Adding it
+
+```{bash}
+git add one_file.txt
+git status
+```
+
+
+#### Commiting it
+
+```{bash}
+git commit -m "Our first commit"
+```
+
+#### Check status
+
+```{bash}
+git status
+```
+
+#### Log
+
+```{bash}
+git log
+```
+
+#### Adding a second file
+
+```{bash}
+echo "One more" > second_file.txt
+echo "Second line" >> second_file.txt
+git add second_file.txt
+git commit -m "Another file"
+git log
+```
+
+#### Now: show files
+
+```{bash }
+ls -l
+```
+
+#### Add content
+
+```{bash}
+echo "Another line." >> second_file.txt
+git status
+```
+
+#### Check
+
+```{bash}
+git diff
+```
+
+#### Commit modified file
+
+```{bash}
+git add second_file.txt
+git commit -m "expand file two"
+```
+
+#### Log
+
+```{bash}
+git log
+```
+
+#### More compact Log
+
+```{bash}
+git log --graph --pretty=format:'%h %d %s (%cr) <%an>' --abbrev-commit
+```
